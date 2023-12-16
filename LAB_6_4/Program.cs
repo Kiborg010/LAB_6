@@ -64,7 +64,11 @@ class Program
     {
         if (inputString != "")
         {
-            Console.WriteLine(inputString);
+            string stringCheck = DoCorrect(inputString);
+            if ((stringCheck.Length == 1) && (arraySignOneAndTwo.Contains(char.Parse(stringCheck))))
+            {
+                return false;
+            }
             Regex regex = new Regex("^[a-zA-Zа-яА-ЯёЁ0-9,.;:?! ]*$"); //Проверка на корректность введённых символов. Могут быть только буквы и цифры
             if (regex.IsMatch(inputString)) 
             {
@@ -221,7 +225,7 @@ class Program
                             }
                         }
                         while (!inputStringIsCorrect);
-                        text = "Была проведена корректировка пробелов и заглавных букв";
+                        text = "Была проведена корректировка пробелов, заглавных букв и знаков препинания";
                         break;
                     };
                 case 2:
@@ -250,7 +254,7 @@ class Program
                                 Console.Clear();
                             }
                             while (!inputStringIsCorrect);
-                            text = "Строка выбрана. Была проведена корректировка пробелов и заглавных букв";
+                            text = "Строка выбрана. Была проведена корректировка пробелов, заглавных букв и знаков препинания";
                         }
                         else
                         {
